@@ -15,10 +15,10 @@ const wantedFields = await (async () => {
   } else {
     return [
       "id", // GUID
-      // 'employeeId',  // sciper
+      // "employeeId", // sciper
       "displayName",
       "givenName",
-      "email",
+      "mail",
       "surname",
     ];
     // e.g. of some of the others values
@@ -177,12 +177,16 @@ const getIdentity = async (accessToken) => {
   let response;
 
   try {
-    const request = await OAuth._fetch(`https://graph.microsoft.com/v1.0/me?$select=${wantedFields.join(",")}`, "GET", {
-      headers: {
-        Accept: "application/json",
-        Authorization: accessToken,
-      },
-    });
+    const request = await OAuth._fetch(
+      `https://graph.microsoft.com/v1.0/me/?$select=${wantedFields.join(",")}`,
+      "GET",
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
 
     response = await request.json();
   } catch (e) {
