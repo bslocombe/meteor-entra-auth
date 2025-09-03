@@ -1,6 +1,6 @@
 Package.describe({
   name: "bslocombe:entra-oauth",
-  version: "0.0.6",
+  version: "0.0.7",
   summary: "Use Microsoft Entra to login, for Meteor 3+.",
   git: "https://github.com/bslocombe/meteor-entra-auth",
 });
